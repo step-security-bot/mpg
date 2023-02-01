@@ -5,7 +5,6 @@ nav:
   - Installation: installation.md
   - Usage: usage.md
   - Contributing: contributing.md
-repo_name: markcornick/mpg
 repo_url: https://github.com/markcornick/mpg/
 site_author: Mark Cornick
 site_description: "Mark's Password Generator"
