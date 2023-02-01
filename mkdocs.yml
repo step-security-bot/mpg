@@ -1,0 +1,13 @@
+---
+copyright: Copyright &copy; 2023 Mark Cornick
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - Contributing: contributing.md
+repo_name: markcornick/mpg
+repo_url: https://github.com/markcornick/mpg/
+site_author: Mark Cornick
+site_description: Generates strings that can be used as reasonably secure passwords
+site_name: mpg
+theme: readthedocs
