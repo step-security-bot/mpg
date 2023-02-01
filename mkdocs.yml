@@ -8,6 +8,6 @@ nav:
 repo_name: markcornick/mpg
 repo_url: https://github.com/markcornick/mpg/
 site_author: Mark Cornick
-site_description: Generates strings that can be used as reasonably secure passwords
+site_description: "Mark's Password Generator"
 site_name: mpg
 theme: readthedocs
