@@ -1,6 +1,8 @@
-*.1
 .envrc
+*.1
 cosign.key
 dist
 gpg.key
 mpg
+oryxBuildBinary
+site
