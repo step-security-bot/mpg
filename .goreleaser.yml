@@ -1,0 +1,135 @@
+---
+before:
+  hooks:
+    - go mod tidy
+brews:
+  - description: "Mark's Password Generator"
+    homepage: https://github.com/mcornick/mpg
+    install: bin.install "mpg"
+    license: MIT
+    tap:
+      name: homebrew-tap
+      owner: mcornick
+builds:
+  - flags:
+      - -trimpath
+    goos:
+      - darwin
+      - dragonfly
+      - freebsd
+      - illumos
+      - js
+      - linux
+      - netbsd
+      - openbsd
+      - solaris
+      - windows
+    goarch:
+      - 386
+      - amd64
+      - arm
+      - arm64
+      - wasm
+    goarm:
+      - 6
+      - 7
+    ldflags:
+      - -s -w -X github.com/mcornick/mpg/cmd.version={{.Version}}
+    mod_timestamp: "{{ .CommitTimestamp }}"
+changelog:
+  filters:
+    exclude:
+      - "^test:"
+      - "^chore:"
+      - "^docs:"
+      - merge conflict
+      - Merge pull request
+      - Merge remote-tracking branch
+      - Merge branch
+      - go mod tidy
+  sort: asc
+  use: github
+checksum:
+  name_template: checksums.txt
+docker_manifests:
+  - image_templates:
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
+    name_template: ghcr.io/mcornick/mpg:{{ .Tag }}
+  - image_templates:
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
+    name_template: ghcr.io/mcornick/mpg:latest
+docker_signs:
+  - args:
+      - sign
+      - --key
+      - "{{ .Env.COSIGN_KEY_PATH }}"
+      - ${artifact}@${digest}
+    artifacts: all
+    cmd: cosign
+    output: true
+    stdin: "{{ .Env.COSIGN_PWD }}"
+dockers:
+  - build_flag_templates:
+      - --pull
+      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/mcornick/mpg/main/README.md
+      - --label=io.artifacthub.package.maintainers=[{"name":"Mark Cornick","email":"mcornick@mcornick.com"}]
+      - --label=io.artifacthub.package.license=MIT
+      - --label=org.opencontainers.image.description="Mark's Password Generator"
+      - --label=org.opencontainers.image.created={{.Date}}
+      - --label=org.opencontainers.image.name={{.ProjectName}}
+      - --label=org.opencontainers.image.revision={{.FullCommit}}
+      - --label=org.opencontainers.image.version={{.Version}}
+      - --label=org.opencontainers.image.source={{.GitURL}}
+      - --platform=linux/amd64
+    dockerfile: Dockerfile
+    image_templates:
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
+    use: buildx
+  - build_flag_templates:
+      - --pull
+      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/mcornick/mpg/main/README.md
+      - --label=io.artifacthub.package.maintainers=[{"name":"Mark Cornick","email":"mcornick@mcornick.com"}]
+      - --label=io.artifacthub.package.license=MIT
+      - --label=org.opencontainers.image.description="Mark's Password Generator"
+      - --label=org.opencontainers.image.created={{.Date}}
+      - --label=org.opencontainers.image.name={{.ProjectName}}
+      - --label=org.opencontainers.image.revision={{.FullCommit}}
+      - --label=org.opencontainers.image.version={{.Version}}
+      - --label=org.opencontainers.image.source={{.GitURL}}
+      - --platform=linux/arm64
+    dockerfile: Dockerfile
+    goarch: arm64
+    image_templates:
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
+    use: buildx
+gomod:
+  proxy: true
+milestones:
+  - close: true
+nfpms:
+  - description: "Mark's Password Generator"
+    formats:
+      - apk
+      - deb
+      - rpm
+    homepage: https://github.com/mcornick/mpg
+    license: MIT
+    maintainer: Mark Cornick <mcornick@mcornick.com>
+    vendor: Mark Cornick
+sboms:
+  - artifacts: archive
+scoop:
+  bucket:
+    name: scoop-bucket
+    owner: mcornick
+  description: "Mark's Password Generator"
+  homepage: https://github.com/mcornick/mpg
+  license: MIT
+signs:
+  - artifacts: checksum
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+universal_binaries:
+  - replace: true

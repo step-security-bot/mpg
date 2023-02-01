@@ -1,0 +1,6 @@
+*.1
+.envrc
+cosign.key
+dist
+gpg.key
+mpg
