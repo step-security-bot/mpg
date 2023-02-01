@@ -1,13 +1,17 @@
 ---
-copyright: Copyright &copy; 2023 Mark Cornick
-nav:
-  - Home: index.md
-  - Installation: installation.md
-  - Usage: usage.md
-  - Contributing: contributing.md
-repo_name: markcornick/mpg
-repo_url: https://github.com/markcornick/mpg/
-site_author: Mark Cornick
-site_description: Generates strings that can be used as reasonably secure passwords
-site_name: mpg
-theme: readthedocs
+name: Publish docs via GitHub Pages
+"on":
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v3
+      - name: Deploy docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@nomaterial
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
