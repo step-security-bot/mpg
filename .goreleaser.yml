@@ -11,7 +11,8 @@ brews:
       name: homebrew-tap
       owner: mcornick
 builds:
-  - flags:
+  - env: [CGO_ENABLED=0]
+    flags:
       - -trimpath
     goos:
       - darwin
