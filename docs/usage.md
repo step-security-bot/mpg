@@ -32,9 +32,13 @@ Use "mpg [command] --help" for more information about a command.
 mpg supports an optional configuration file. It must be in a
 format supported by [viper](https://github.com/spf13/viper), such as
 YAML, TOML, or JSON; be named `config.XXXX` with the proper format
-suffix; be located in `$HOME/Library/Application Support/mpg`
-(macOS) or `$XDG_CONFIG_HOME/mpg` (other Unix) or
-`/etc/mpg`; and use the command line options as keys.
+suffix; use the command line options as keys; and be located in one
+of these directories:
+
+- `$HOME/Library/Application Support/mpg` (macOS)
+- `$XDG_CONFIG_HOME/mpg` (Unix)
+- `/etc/mpg` (macOS or Unix)
+- `%AppData%\mpg` (Windows)
 
 For example, this data in `config.yaml` would replicate the default
 configuration of mpg:
