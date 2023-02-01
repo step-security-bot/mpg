@@ -39,14 +39,13 @@ jobs:
           COSIGN_KEY_PATH: /home/runner/cosign.asc
           COSIGN_PWD: ${{ secrets.COSIGN_PWD }}
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-          GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
           GPG_KEY_PATH: /home/runner/gpgkey.asc
           NFPM_DEFAULT_PASSPHRASE: ${{ secrets.PASSPHRASE }}
         uses: goreleaser/goreleaser-action@v4
         with:
           args: release --clean
-          distribution: goreleaser-pro
+          distribution: goreleaser
           version: latest
       - run: rm /home/runner/gpgkey.asc /home/runner/cosign.asc
         shell: bash
