@@ -8,7 +8,7 @@ classes: upper-case letters, lower-case letters, and digits.
 
 Options can be given to omit any one or any two of these character
 classes. For instance, you can omit uppercase letters and digits by
-passing `-upper=false -digit=false` to `mpg`. This will return a
+passing `--upper=false --digit=false` to `mpg`. This will return a
 password composed only of lowercase letters.
 
 Passwords are guaranteed to contain at least one of each selected
