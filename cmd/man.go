@@ -35,7 +35,7 @@ import (
 var manCmd = &cobra.Command{
 	Use:   "man",
 	Short: "Generate man pages",
-	Long: fmt.Sprintln(`Generates man pages for linenoise and its subcommands.
+	Long: fmt.Sprintln(`Generates man pages for mpg and its subcommands.
 Files will be written to the current directory.`),
 	Run: func(cmd *cobra.Command, args []string) {
 		header := &doc.GenManHeader{

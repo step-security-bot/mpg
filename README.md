@@ -102,10 +102,10 @@ these environment variables would replicate the default configuration of
 mpg:
 
 ```sh
-export LINENOISE_LENGTH=16
-export LINENOISE_UPPER=1
-export LINENOISE_LOWER=1
-export LINENOISE_DIGIT=1
+export MPG_LENGTH=16
+export MPG_UPPER=1
+export MPG_LOWER=1
+export MPG_DIGIT=1
 ```
 
 (To disable uppercase, lowercase, or digits, set the appropriate

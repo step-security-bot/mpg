@@ -86,7 +86,7 @@ func init() {
 	rootCmd.Flags().BoolVarP(&upper, "upper", "U", true, "include uppercase")
 	rootCmd.Flags().BoolVarP(&lower, "lower", "u", true, "include lowercase")
 	rootCmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
-	viper.SetEnvPrefix("linenoise")
+	viper.SetEnvPrefix("mpg")
 	err = viper.BindEnv("length")
 	if err != nil {
 		panic(err)
