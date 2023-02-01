@@ -51,7 +51,6 @@ jobs:
         shell: bash
 name: goreleaser
 "on":
-  pull_request: null
   push:
     tags:
       - "*"
