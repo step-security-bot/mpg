@@ -2,10 +2,17 @@
 before:
   hooks:
     - go mod tidy
+    - ./scripts/completions.sh
+    - ./scripts/manpages.sh
 brews:
   - description: "Mark's Password Generator"
     homepage: https://github.com/mcornick/mpg
-    install: bin.install "mpg"
+    install: |-
+      bin.install "mpg"
+      bash_completion.install "completions/mpg.bash" => "mpg"
+      zsh_completion.install "completions/mpg.zsh" => "_mpg"
+      fish_completion.install "completions/mpg.fish"
+      man1.install "manpages/mpg.1"
     license: MIT
     tap:
       name: homebrew-tap
@@ -119,6 +126,27 @@ nfpms:
     license: MIT
     maintainer: Mark Cornick <mcornick@mcornick.com>
     vendor: Mark Cornick
+    contents:
+      - src: ./completions/mpg.bash
+        dst: /usr/share/bash-completion/completions/mpg
+        file_info:
+          mode: 0644
+      - src: ./completions/mpg.fish
+        dst: /usr/share/fish/vendor_completions.d/mpg.fish
+        file_info:
+          mode: 0644
+      - src: ./completions/mpg.zsh
+        dst:  /usr/share/zsh/vendor-completions/_mpg
+        file_info:
+          mode: 0644
+      - src: ./manpages/mpg.1
+        dst: /usr/share/man/man1/mpg.1
+        file_info:
+          mode: 0644
+      - src: ./LICENSE
+        dst: /usr/share/doc/mpg/copyright
+        file_info:
+          mode: 0644
 sboms:
   - artifacts: archive
 scoop:
@@ -134,3 +162,16 @@ snapshot:
   name_template: "{{ incpatch .Version }}-next"
 universal_binaries:
   - replace: true
+archives:
+  - format_overrides:
+    - goos: windows
+      format: zip
+    builds_info:
+      group: root
+      owner: root
+    rlcp: true
+    files:
+      - README.md
+      - LICENSE
+      - completions/*
+      - manpages/mpg.1
