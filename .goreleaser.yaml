@@ -1,11 +1,24 @@
 ---
+archives:
+  - builds_info:
+      group: root
+      owner: root
+    files:
+      - README.md
+      - LICENSE
+      - completions/*
+      - manpages/mpg.1
+    format_overrides:
+      - format: zip
+        goos: windows
+    rlcp: true
 before:
   hooks:
     - go mod tidy
     - ./scripts/completions.sh
     - ./scripts/manpages.sh
 brews:
-  - description: "Mark's Password Generator"
+  - description: Mark's Password Generator
     homepage: https://github.com/mcornick/mpg
     install: |-
       bin.install "mpg"
@@ -18,9 +31,19 @@ brews:
       name: homebrew-tap
       owner: mcornick
 builds:
-  - env: [CGO_ENABLED=0]
+  - env:
+      - CGO_ENABLED=0
     flags:
       - -trimpath
+    goarch:
+      - "386"
+      - amd64
+      - arm
+      - arm64
+      - wasm
+    goarm:
+      - "6"
+      - "7"
     goos:
       - darwin
       - dragonfly
@@ -32,15 +55,6 @@ builds:
       - openbsd
       - solaris
       - windows
-    goarch:
-      - "386"
-      - amd64
-      - arm
-      - arm64
-      - wasm
-    goarm:
-      - "6"
-      - "7"
     ldflags:
       - -s -w -X github.com/mcornick/mpg/cmd.version={{.Version}}
     mod_timestamp: "{{ .CommitTimestamp }}"
@@ -117,7 +131,28 @@ gomod:
 milestones:
   - close: true
 nfpms:
-  - description: "Mark's Password Generator"
+  - contents:
+      - dst: /usr/share/bash-completion/completions/mpg
+        file_info:
+          mode: 0644
+        src: ./completions/mpg.bash
+      - dst: /usr/share/fish/vendor_completions.d/mpg.fish
+        file_info:
+          mode: 0644
+        src: ./completions/mpg.fish
+      - dst: /usr/share/zsh/vendor-completions/_mpg
+        file_info:
+          mode: 0644
+        src: ./completions/mpg.zsh
+      - dst: /usr/share/man/man1/mpg.1
+        file_info:
+          mode: 0644
+        src: ./manpages/mpg.1
+      - dst: /usr/share/doc/mpg/copyright
+        file_info:
+          mode: 0644
+        src: ./LICENSE
+    description: Mark's Password Generator
     formats:
       - apk
       - deb
@@ -126,34 +161,13 @@ nfpms:
     license: MIT
     maintainer: Mark Cornick <mcornick@mcornick.com>
     vendor: Mark Cornick
-    contents:
-      - src: ./completions/mpg.bash
-        dst: /usr/share/bash-completion/completions/mpg
-        file_info:
-          mode: 0644
-      - src: ./completions/mpg.fish
-        dst: /usr/share/fish/vendor_completions.d/mpg.fish
-        file_info:
-          mode: 0644
-      - src: ./completions/mpg.zsh
-        dst:  /usr/share/zsh/vendor-completions/_mpg
-        file_info:
-          mode: 0644
-      - src: ./manpages/mpg.1
-        dst: /usr/share/man/man1/mpg.1
-        file_info:
-          mode: 0644
-      - src: ./LICENSE
-        dst: /usr/share/doc/mpg/copyright
-        file_info:
-          mode: 0644
 sboms:
   - artifacts: archive
 scoop:
   bucket:
     name: scoop-bucket
     owner: mcornick
-  description: "Mark's Password Generator"
+  description: Mark's Password Generator
   homepage: https://github.com/mcornick/mpg
   license: MIT
 signs:
@@ -162,16 +176,3 @@ snapshot:
   name_template: "{{ incpatch .Version }}-next"
 universal_binaries:
   - replace: true
-archives:
-  - format_overrides:
-    - goos: windows
-      format: zip
-    builds_info:
-      group: root
-      owner: root
-    rlcp: true
-    files:
-      - README.md
-      - LICENSE
-      - completions/*
-      - manpages/mpg.1
