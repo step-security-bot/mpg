@@ -55,6 +55,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#binaries-and-rpmdebapk-packages">Binaries and RPM/DEB/APK packages</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#signatures">Signatures</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -104,11 +106,12 @@ scoop install mpg
 <h2 id="docker">Docker</h2>
 <pre><code class="language-bash">docker run --rm ghcr.io/mcornick/mpg
 </code></pre>
-<p>Containers and manifests are signed with <a href="https://mcornick.github.io/cosign.pub">this Cosign
-key</a>.</p>
 <h2 id="binaries-and-rpmdebapk-packages">Binaries and RPM/DEB/APK packages</h2>
-<p><a href="https://github.com/mcornick/mpg/releases">Here.</a> Checksums from that
-page are signed with <a href="https://github.com/mcornick.gpg">my GPG key</a>.</p>
+<p>[Here.]</p>
+<h2 id="signatures">Signatures</h2>
+<p>Binary checksums and container manifests are signed with
+<a href="https://docs.sigstore.dev/cosign/overview/">Cosign</a>.
+The certificate needed to verify signatures can be found in each release.</p>
               
             </div>
           </div><footer>
