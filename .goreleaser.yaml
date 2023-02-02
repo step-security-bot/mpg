@@ -15,6 +15,7 @@ builds:
     flags:
       - -trimpath
     goos:
+      - android
       - darwin
       - dragonfly
       - freebsd
