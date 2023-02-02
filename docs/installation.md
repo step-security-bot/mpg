@@ -20,9 +20,12 @@ scoop install mpg
 docker run --rm ghcr.io/mcornick/mpg
 ```
 
-Containers and manifests are signed with [this Cosign
-key](https://mcornick.github.io/cosign.pub).
-
 ## Binaries and RPM/DEB/APK packages
-[Here.](https://github.com/mcornick/mpg/releases) Checksums from that
-page are signed with [my GPG key](https://github.com/mcornick.gpg).
+
+[Here.]
+
+## Signatures
+
+Binary checksums and container manifests are signed with
+[Cosign](https://docs.sigstore.dev/cosign/overview/).
+The certificate needed to verify signatures can be found in each release.
