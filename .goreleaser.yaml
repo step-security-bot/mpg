@@ -84,14 +84,13 @@ docker_manifests:
     name_template: ghcr.io/mcornick/mpg:latest
 docker_signs:
   - args:
-      - sign
-      - --key
-      - "{{ .Env.COSIGN_KEY_PATH }}"
-      - ${artifact}@${digest}
-    artifacts: all
+      - "sign"
+      - "${artifact}@#{digest}"
+    artifacts: manifests
     cmd: cosign
+    env:
+      - COSIGN_EXPERIMENTAL=1
     output: true
-    stdin: "{{ .Env.COSIGN_PWD }}"
 dockers:
   - build_flag_templates:
       - --pull
@@ -171,7 +170,17 @@ scoop:
   homepage: https://github.com/mcornick/mpg
   license: MIT
 signs:
-  - artifacts: checksum
+  - args:
+      - sign-blob
+      - "--output-certificate=${certificate}"
+      - "--output-signature=${signature}"
+      - "${artifact}"
+    artifacts: checksum
+    certificate: '${artifact}.pem'
+    cmd: cosign
+    env:
+      - COSIGN_EXPERIMENTAL=1
+    output: true
 snapshot:
   name_template: "{{ incpatch .Version }}-next"
 universal_binaries:
