@@ -6,8 +6,7 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 plugins:
-  - git-revision-date-localized:
-      enable_creation_date: true
+  - git-revision-date-localized
 repo_name: mcornick/mpg
 repo_url: https://github.com/mcornick/mpg
 site_author: Mark Cornick
