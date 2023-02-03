@@ -85,7 +85,7 @@ docker_manifests:
 docker_signs:
   - args:
       - "sign"
-      - "${artifact}@#{digest}"
+      - "${artifact}@${digest}"
     artifacts: manifests
     cmd: cosign
     env:
