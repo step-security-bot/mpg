@@ -102,10 +102,10 @@ For example, these files replicate the default configuration of __mpg__:
 
     ```yaml
     ---
-    length: 16
-    upper: true
-    lower: true
     digit: true
+    length: 16
+    lower: true
+    upper: true
     ```
 
 === "config.toml"
