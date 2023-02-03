@@ -20,5 +20,6 @@ jobs:
       - env:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: pip install git+https://${GH_PAT}@github.com/squidfunk/mkdocs-material-insiders.git
-      - run: pip install mkdocs-git-revision-date-localized-plugin pillow cairosvg
-      - run: mkdocs gh-deploy --force --config-file mkdocs.insiders.yml
+      - run: pip install mkdocs-git-revision-date-localized-plugin pillow cairosvg mike
+      - run: mike deploy --push --update-aliases 1.0 latest --config-file mkdocs.insiders.yml
+      - run: mike set-default --push latest
