@@ -133,10 +133,10 @@ For example, these files replicate the default configuration of __mpg__:
 Configuration is also possible using environment variables. For example, these environment variables would replicate the default configuration of __mpg__:
 
 ```sh
-export MPG_LENGTH=16
-export MPG_UPPER=1
-export MPG_LOWER=1
 export MPG_DIGIT=1
+export MPG_LENGTH=16
+export MPG_LOWER=1
+export MPG_UPPER=1
 ```
 
 (To disable uppercase, lowercase, or digits, set the appropriate variable to 0.)
