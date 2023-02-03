@@ -8,8 +8,6 @@ markdown_extensions:
 plugins:
   - git-revision-date-localized:
       enable_creation_date: true
-  - search:
-      lang: en
 repo_name: mcornick/mpg
 repo_url: https://github.com/mcornick/mpg
 site_author: Mark Cornick
