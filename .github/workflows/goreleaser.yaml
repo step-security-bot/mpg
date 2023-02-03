@@ -24,10 +24,11 @@ jobs:
           username: ${{ github.repository_owner }}
       - env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
         uses: goreleaser/goreleaser-action@v4
         with:
           args: release --clean
-          distribution: goreleaser
+          distribution: goreleaser-pro
           version: latest
 name: goreleaser
 "on":
