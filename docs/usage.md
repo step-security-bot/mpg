@@ -2,8 +2,8 @@
 
 ## Command Line
 
-```sh
-mcornick@macbook-air mpg % ./mpg --help
+```bash
+$ ./mpg --help
 mpg is a command-line tool that generates strings of
 random characters that can be used as reasonably secure passwords.
 
@@ -40,16 +40,37 @@ of these directories:
 - `/etc/mpg` (macOS or Unix)
 - `%AppData%\mpg` (Windows)
 
-For example, this data in `config.yaml` would replicate the default
-configuration of mpg:
+For example, these files replicate the default configuration of mpg:
 
-```yaml
----
-length: 16
-upper: true
-lower: true
-digit: true
-```
+=== "config.yaml"
+
+    ```yaml
+    ---
+    length: 16
+    upper: true
+    lower: true
+    digit: true
+    ```
+
+=== "config.toml"
+
+    ```toml
+    digit = true
+    length = 16
+    lower = true
+    upper = true
+    ```
+
+=== "config.json"
+
+    ```json
+    {
+      "digit": true,
+      "length": 16,
+      "lower": true,
+      "upper": true
+    }
+    ```
 
 Configuration is also possible using environment variables. For example,
 these environment variables would replicate the default configuration of
