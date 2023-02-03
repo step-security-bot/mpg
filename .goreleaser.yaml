@@ -170,17 +170,7 @@ scoop:
   homepage: https://github.com/mcornick/mpg
   license: MIT
 signs:
-  - args:
-      - sign-blob
-      - "--output-certificate=${certificate}"
-      - "--output-signature=${signature}"
-      - "${artifact}"
-    artifacts: checksum
-    certificate: "${artifact}.pem"
-    cmd: cosign
-    env:
-      - COSIGN_EXPERIMENTAL=1
-    output: true
+  - artifacts: checksum
 snapshot:
   name_template: "{{ incpatch .Version }}-next"
 universal_binaries:

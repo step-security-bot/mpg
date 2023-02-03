@@ -46,13 +46,13 @@ I use this repository to experiment with [goreleaser](https://goreleaser.com/), 
 
 === "Signatures"
 
+    Binary checksums are signed with my [GPG key](https://github.com/mcornick.gpg).
+
     !!! Note
 
-        Signatures are an ongoing experiment. They might be broken. Do not depend on them (or, really, on mpg) for mission-critical things.
+        Container signatures are an ongoing experiment. They might be broken. Do not depend on them (or, really, on mpg) for mission-critical things.
 
-    Binary checksums and container manifests are signed with [Cosign](https://docs.sigstore.dev/cosign/overview/). The certificate needed to verify binary checksums can be found in each release.
-
-    The signatures are created with Cosign's "keyless" mode, which requires setting `COSIGN_EXPERIMENTAL=1` when using Cosign versions prior to 2.0.0:
+    Container manifests are signed with [Cosign](https://docs.sigstore.dev/cosign/overview/). The signatures are created with Cosign's "keyless" mode, which requires setting `COSIGN_EXPERIMENTAL=1` when using Cosign versions prior to 2.0.0:
 
     ```bash
     env COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/mcornick/mpg
