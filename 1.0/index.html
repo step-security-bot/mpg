@@ -537,12 +537,12 @@
 <p>I maintain binary releases on GitHub <a href="https://github.com/mcornick/mpg/releases">here</a>.</p>
 </div>
 <div class="tabbed-block">
+<p>Binary checksums are signed with my <a href="https://github.com/mcornick.gpg">GPG key</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Signatures are an ongoing experiment. They might be broken. Do not depend on them (or, really, on mpg) for mission-critical things.</p>
+<p>Container signatures are an ongoing experiment. They might be broken. Do not depend on them (or, really, on mpg) for mission-critical things.</p>
 </div>
-<p>Binary checksums and container manifests are signed with <a href="https://docs.sigstore.dev/cosign/overview/">Cosign</a>. The certificate needed to verify binary checksums can be found in each release.</p>
-<p>The signatures are created with Cosign's "keyless" mode, which requires setting <code>COSIGN_EXPERIMENTAL=1</code> when using Cosign versions prior to 2.0.0:</p>
+<p>Container manifests are signed with <a href="https://docs.sigstore.dev/cosign/overview/">Cosign</a>. The signatures are created with Cosign's "keyless" mode, which requires setting <code>COSIGN_EXPERIMENTAL=1</code> when using Cosign versions prior to 2.0.0:</p>
 <div class="highlight"><pre><span></span><code>env<span class="w"> </span><span class="nv">COSIGN_EXPERIMENTAL</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>cosign<span class="w"> </span>verify<span class="w"> </span>ghcr.io/mcornick/mpg
 </code></pre></div>
 </div>
@@ -684,6 +684,8 @@ Use<span class="w"> </span><span class="s2">&quot;mpg [command] --help&quot;</sp
   
     
     
+    
+    
       
       
     
@@ -694,9 +696,13 @@ Use<span class="w"> </span><span class="s2">&quot;mpg [command] --help&quot;</sp
     
     
       
+    
+    
+    
+      
       
     
-    <a href="https://social.sdf.org/@mcornick" target="_blank" rel="noopener" title="social.sdf.org" class="md-social__link">
+    <a href="https://social.sdf.org/@mcornick" target="_blank" rel="noopener me" title="social.sdf.org" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
     </a>
   
