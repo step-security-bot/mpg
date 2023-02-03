@@ -176,7 +176,7 @@ signs:
       - "--output-signature=${signature}"
       - "${artifact}"
     artifacts: checksum
-    certificate: '${artifact}.pem'
+    certificate: "${artifact}.pem"
     cmd: cosign
     env:
       - COSIGN_EXPERIMENTAL=1
