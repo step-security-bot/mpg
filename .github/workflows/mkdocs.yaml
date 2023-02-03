@@ -22,4 +22,4 @@ jobs:
           GH_PAT: ${{ secrets.GH_PAT }}
         run: pip install git+https://${GH_PAT}@github.com/squidfunk/mkdocs-material-insiders.git
       - run: pip install mkdocs-git-revision-date-localized-plugin
-      - run: mkdocs gh-deploy --force
+      - run: mkdocs gh-deploy --force --config-file mkdocs.insiders.yml
