@@ -9,7 +9,7 @@ Options can be given to omit any one or two of these character classes. For inst
 
 Passwords are guaranteed to contain at least one of each selected character class. The default length is 16. __mpg__ will create a password of any length greater than or equal to the number of character classes selected.
 
-If the password length is less than or equal to the total number of characters selected, __mpg__ will not repeat characters within the generated password.
+If the password length is less than or equal to the total number of characters selected, __mpg__ will not repeat characters within the generated password. For instance, in the default configuration of __mpg__, 62 characters are selected (26 uppercase, 26 lowercase, and 10 digits) and so a length of 62 or less will not repeat any character.
 
 ## Installation
 
