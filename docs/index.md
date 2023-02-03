@@ -143,10 +143,18 @@ export MPG_UPPER=1
 
 Values given on the command line take precedence over values given in the configuration file or in environment variables.
 
-## Contributing
+## Contributing to mpg
 
-Bug reports and pull requests are welcome on [GitHub](https://github.com/mcornick/mpg).
+If you think you have a problem, improvement, or other contribution towards the betterment of __mpg__, please file an issue or, where appropriate, a pull request.
 
-This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://www.contributor-covenant.org/) code of conduct.
+Keep in mind that I'm not paid to write Go code, so I'm doing this in my spare time, which means it might take me a while to respond.
 
-__mpg__ is available as open source under the terms of the MIT License.
+When filing a pull request, please explain what you're changing and why.  Please use standard Go formatting (`go fmt` is your friend.) Please limit your changes to the specific thing you're fixing and isolate your changes in a topic branch that I can merge without pulling in other stuff.
+
+__mpg__ uses [Conventional Changelog](https://github.com/conventional-changelog/conventional-changelog-angular/blob/master/convention.md) style. Please follow this convention. Scopes are not required in commit messages.
+
+__mpg__ uses the MIT license. Please indicate your acceptance of the MIT license by using [git commit --signoff](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--s).
+
+__mpg__ is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+Thanks for contributing!
