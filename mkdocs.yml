@@ -1,5 +1,11 @@
 ---
 copyright: Copyright &copy; 2023 Mark Cornick
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/mcornick
+    - icon: fontawesome/brands/mastodon
+      link: https://social.sdf.org/@mcornick
 markdown_extensions:
   - admonition
   - pymdownx.superfences
@@ -7,6 +13,7 @@ markdown_extensions:
       alternate_style: true
 plugins:
   - git-revision-date-localized
+  - social
 repo_name: mcornick/mpg
 repo_url: https://github.com/mcornick/mpg
 site_author: Mark Cornick
@@ -14,6 +21,7 @@ site_description:
   mpg is a command-line tool that generates strings of random characters
   that can be used as reasonably secure passwords.
 site_name: "mpg: Mark's Password Generator"
+site_url: https://mcornick.com/mpg/
 theme:
   features:
     - content.action.edit
