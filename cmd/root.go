@@ -77,8 +77,10 @@ func init() {
 		log.Fatal(err)
 	}
 	viper.AddConfigPath(configDir + "/mpg")
-	if err = viper.ReadInConfig(); err != nil {
-		if _, ok := err.(viper.ConfigFileNotFoundError); !ok {
+	err = viper.ReadInConfig()
+	if err != nil {
+		_, ok := err.(viper.ConfigFileNotFoundError)
+		if !ok {
 			log.Fatal(err)
 		}
 	}
