@@ -13,8 +13,6 @@ If the password length is less than or equal to the total number of characters s
 
 ## Installation
 
-I use this repository to experiment with [goreleaser](https://goreleaser.com/), so there are a ridiculous number of builds and packages available for such a trivial app. Don't judge.
-
 === "Homebrew"
 
     I maintain a [Homebrew](https://brew.sh/) tap.
@@ -42,7 +40,7 @@ I use this repository to experiment with [goreleaser](https://goreleaser.com/), 
 
 === "Binaries and RPM/DEB/APK packages"
 
-    I maintain binary releases on GitHub [here](https://github.com/mcornick/mpg/releases).
+    I maintain binary releases on GitHub [here](https://github.com/mcornick/mpg/releases). As of version 1.0.21, releases are built for macOS (universal), Linux (i386, amd64, arm64, and armv6) and Windows (i386, amd64).
 
 === "Signatures"
 
