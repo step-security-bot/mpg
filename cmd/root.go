@@ -87,36 +87,14 @@ func init() {
 	rootCmd.Flags().BoolVarP(&lower, "lower", "u", true, "include lowercase")
 	rootCmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
 	viper.SetEnvPrefix("mpg")
-	err = viper.BindEnv("length")
-	if err != nil {
-		panic(err)
-	}
-	err = viper.BindEnv("upper")
-	if err != nil {
-		panic(err)
-	}
-	err = viper.BindEnv("lower")
-	if err != nil {
-		panic(err)
-	}
-	err = viper.BindEnv("digit")
-	if err != nil {
-		panic(err)
-	}
-	err = viper.BindPFlag("length", rootCmd.Flags().Lookup("length"))
-	if err != nil {
-		panic(err)
-	}
-	err = viper.BindPFlag("upper", rootCmd.Flags().Lookup("upper"))
-	if err != nil {
-		panic(err)
-	}
-	err = viper.BindPFlag("lower", rootCmd.Flags().Lookup("lower"))
-	if err != nil {
-		panic(err)
-	}
-	err = viper.BindPFlag("digit", rootCmd.Flags().Lookup("digit"))
-	if err != nil {
-		panic(err)
+	for _, key := range []string{"length", "upper", "lower", "digit"} {
+		err = viper.BindEnv(key)
+		if err != nil {
+			log.Fatal(err)
+		}
+		err = viper.BindPFlag(key, rootCmd.Flags().Lookup(key))
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 }
