@@ -43,9 +43,9 @@ var (
 	rootCmd = &cobra.Command{
 		Version: version,
 		Use:     "mpg",
-		Short:   "A password generator",
-		Long: `mpg is a command-line tool that generates strings of
-random characters that can be used as reasonably secure passwords.`,
+		Short:   "Mark's Password Generator",
+		Long: `mpg is a command-line tool that generates strings of random characters
+that can be used as reasonably secure passwords.`,
 		Run: func(cmd *cobra.Command, args []string) {
 			p := linenoise.Parameters{
 				Length: viper.GetInt("length"),
