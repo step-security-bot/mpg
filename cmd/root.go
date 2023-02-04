@@ -65,7 +65,7 @@ random characters that can be used as reasonably secure passwords.`,
 func Execute() {
 	err := rootCmd.Execute()
 	if err != nil {
-		os.Exit(1)
+		log.Fatal(err)
 	}
 }
 
@@ -74,7 +74,7 @@ func init() {
 	viper.AddConfigPath("/etc/mpg/")
 	configDir, err := os.UserConfigDir()
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 	viper.AddConfigPath(configDir + "/mpg")
 	if err = viper.ReadInConfig(); err != nil {
