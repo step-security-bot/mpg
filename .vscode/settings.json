@@ -1,7 +1,13 @@
 {
   "yaml.schemas": {
-    "https://json.schemastore.org/github-workflow.json": "file:///workspaces/mpg/.github/workflows/goreleaser.yml",
-    "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
+    "https://json.schemastore.org/github-workflow.json": [
+      ".github/workflows/goreleaser.yml",
+      ".github/workflows/mkdocs.yml"
+    ],
+    "https://squidfunk.github.io/mkdocs-material/schema.json": [
+      "mkdocs.yml",
+      "mkdocs.insiders.yml"
+    ]
   },
   "yaml.customTags": [
     "!ENV scalar",
