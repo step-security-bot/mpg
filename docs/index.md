@@ -32,10 +32,12 @@ If the password length is less than or equal to the total number of characters s
 
 === "Container Image"
 
-    I maintain container images on GitHub [here](https://github.com/mcornick/mpg/pkgs/container/mpg).
+    I maintain container images on [GitHub](https://github.com/mcornick/mpg/pkgs/container/mpg) and [Docker Hub](https://hub.docker.com/repository/docker/mcornick/mpg).
 
     ```bash
     docker run --rm ghcr.io/mcornick/mpg
+    # or
+    docker run --rm mcornick/mpg
     ```
 
 === "Binaries and RPM/DEB/APK packages"

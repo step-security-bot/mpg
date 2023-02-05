@@ -61,13 +61,21 @@ docker_manifests:
       - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
     name_template: ghcr.io/mcornick/mpg:{{ .Tag }}
   - image_templates:
+      - mcornick/mpg:{{ .Tag }}-amd64
+      - mcornick/mpg:{{ .Tag }}-arm64
+    name_template: mcornick/mpg:{{ .Tag }}
+  - image_templates:
       - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
       - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
     name_template: ghcr.io/mcornick/mpg:latest
+  - image_templates:
+      - mcornick/mpg:{{ .Tag }}-amd64
+      - mcornick/mpg:{{ .Tag }}-arm64
+    name_template: mcornick/mpg:latest
 docker_signs:
   - args:
-      - "sign"
-      - "${artifact}@${digest}"
+      - sign
+      - ${artifact}@${digest}
     artifacts: manifests
     cmd: cosign
     env:
@@ -89,6 +97,7 @@ dockers:
     dockerfile: Dockerfile
     image_templates:
       - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
+      - mcornick/mpg:{{ .Tag }}-amd64
     use: buildx
   - build_flag_templates:
       - --pull
@@ -106,6 +115,7 @@ dockers:
     goarch: arm64
     image_templates:
       - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
+      - mcornick/mpg:{{ .Tag }}-arm64
     use: buildx
 gomod:
   proxy: true

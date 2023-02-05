@@ -30,7 +30,11 @@ jobs:
         with:
           password: ${{ secrets.GH_PAT }}
           registry: ghcr.io
-          username: ${{ github.repository_owner }}
+          username: mcornick
+      - uses: docker/login-action@v2
+        with:
+          password: ${{ secrets.DOCKER_TOKEN }}
+          username: mcornick
       - env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
