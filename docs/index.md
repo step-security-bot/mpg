@@ -36,7 +36,7 @@ If the password length is less than or equal to the total number of characters s
 
     ```bash
     docker run --rm ghcr.io/mcornick/mpg
-    # or
+    # or, for Docker Hub
     docker run --rm mcornick/mpg
     ```
 
@@ -56,6 +56,8 @@ If the password length is less than or equal to the total number of characters s
 
     ```bash
     env COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/mcornick/mpg
+    # or, for Docker Hub
+    env COSIGN_EXPERIMENTAL=1 cosign verify mcornick/mpg
     ```
 
 ## Usage
