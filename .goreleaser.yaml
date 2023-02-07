@@ -63,6 +63,9 @@ docker_signs:
     cmd: cosign
     env:
       - COSIGN_EXPERIMENTAL=1
+    ids:
+      - mpg-ghcr
+      - mpg-docker
     output: true
 gomod:
   proxy: true
