@@ -43,6 +43,14 @@ jobs:
           args: release --clean
           distribution: goreleaser-pro
           version: latest
+      - env:
+          COSIGN_EXPERIMENTAL: 1
+        run: cosign sign ghcr.io/mcornick/mpg
+        shell: bash
+      - env:
+          COSIGN_EXPERIMENTAL: 1
+        run: cosign sign mcornick/mpg
+        shell: bash
       - run: rm /home/runner/gpgkey.asc
         shell: bash
 name: goreleaser
