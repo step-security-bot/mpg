@@ -40,6 +40,10 @@ If the password length is less than or equal to the total number of characters s
     docker run --rm mcornick/mpg
     ```
 
+    !!! Note
+
+    Some previous releases of the container image were signed with [Cosign](https://docs.sigstore.dev/cosign/overview/). This feature has been reverted for the time being, but I hope to return it to the build in the future.
+
 === "Binaries and RPM/DEB/APK packages"
 
     I maintain binary releases on GitHub [here](https://github.com/mcornick/mpg/releases). As of version 1.0.21, releases are built for macOS (universal), Linux (i386, amd64, arm64, and armv6) and Windows (i386, amd64).
