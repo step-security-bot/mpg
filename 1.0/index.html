@@ -533,6 +533,10 @@
 <span class="c1"># or, for Docker Hub</span>
 docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>mcornick/mpg
 </code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Some previous releases of the container image were signed with <a href="https://docs.sigstore.dev/cosign/overview/">Cosign</a>. This feature has been reverted for the time being, but I hope to return it to the build in the future.</p>
 </div>
 <div class="tabbed-block">
 <p>I maintain binary releases on GitHub <a href="https://github.com/mcornick/mpg/releases">here</a>. As of version 1.0.21, releases are built for macOS (universal), Linux (i386, amd64, arm64, and armv6) and Windows (i386, amd64).</p>
