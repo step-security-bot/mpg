@@ -55,18 +55,6 @@ changelog:
   use: github
 checksum:
   name_template: checksums.txt
-docker_signs:
-  - args:
-      - sign
-      - ${artifact}@${digest}
-    artifacts: manifests
-    cmd: cosign
-    env:
-      - COSIGN_EXPERIMENTAL=1
-    ids:
-      - mpg-ghcr
-      - mpg-docker
-    output: true
 gomod:
   proxy: true
 kos:
