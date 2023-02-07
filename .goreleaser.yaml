@@ -85,6 +85,7 @@ gomod:
   proxy: true
 kos:
   - bare: true
+    id: mpg-ghcr
     platforms:
       - linux/amd64
       - linux/arm64
@@ -93,6 +94,7 @@ kos:
       - latest
       - "{{.Tag}}"
   - bare: true
+    id: mpg-docker
     platforms:
       - linux/amd64
       - linux/arm64
