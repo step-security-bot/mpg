@@ -621,7 +621,12 @@ Use<span class="w"> </span><span class="s2">&quot;mpg [command] --help&quot;</sp
 <span class="nb">export</span><span class="w"> </span><span class="nv">MPG_UPPER</span><span class="o">=</span><span class="m">1</span>
 </code></pre></div>
 <p>(To disable uppercase, lowercase, or digits, set the appropriate variable to 0.)</p>
-<p>Values given on the command line take precedence over values given in the configuration file or in environment variables.</p>
+<p>The order of precedence for configuration is:</p>
+<ol>
+<li>Values given on the command line</li>
+<li>Values given as environment variables</li>
+<li>Values in the configuration file</li>
+</ol>
 <h2 id="contributing-to-mpg">Contributing to mpg</h2>
 <p>If you think you have a problem, improvement, or other contribution towards the betterment of <strong>mpg</strong>, please file an issue or, where appropriate, a pull request.</p>
 <p>Keep in mind that I'm not paid to write Go code, so I'm doing this in my spare time, which means it might take me a while to respond.</p>
