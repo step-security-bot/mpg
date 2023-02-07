@@ -143,7 +143,11 @@ export MPG_UPPER=1
 
 (To disable uppercase, lowercase, or digits, set the appropriate variable to 0.)
 
-Values given on the command line take precedence over values given in the configuration file or in environment variables.
+The order of precedence for configuration is:
+
+1. Values given on the command line
+1. Values given as environment variables
+1. Values in the configuration file
 
 ## Contributing to mpg
 
