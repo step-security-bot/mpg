@@ -55,6 +55,23 @@ changelog:
   use: github
 checksum:
   name_template: checksums.txt
+docker_manifests:
+  - image_templates:
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
+    name_template: ghcr.io/mcornick/mpg:{{ .Tag }}
+  - image_templates:
+      - mcornick/mpg:{{ .Tag }}-amd64
+      - mcornick/mpg:{{ .Tag }}-arm64
+    name_template: mcornick/mpg:{{ .Tag }}
+  - image_templates:
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
+    name_template: ghcr.io/mcornick/mpg:latest
+  - image_templates:
+      - mcornick/mpg:{{ .Tag }}-amd64
+      - mcornick/mpg:{{ .Tag }}-arm64
+    name_template: mcornick/mpg:latest
 docker_signs:
   - args:
       - sign
@@ -63,33 +80,45 @@ docker_signs:
     cmd: cosign
     env:
       - COSIGN_EXPERIMENTAL=1
-    ids:
-      - mpg-ghcr
-      - mpg-docker
     output: true
+dockers:
+  - build_flag_templates:
+      - --pull
+      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/mcornick/mpg/main/README.md
+      - --label=io.artifacthub.package.maintainers=[{"name":"Mark Cornick","email":"mcornick@mcornick.com"}]
+      - --label=io.artifacthub.package.license=MIT
+      - --label=org.opencontainers.image.description="Mark's Password Generator"
+      - --label=org.opencontainers.image.created={{.Date}}
+      - --label=org.opencontainers.image.name={{.ProjectName}}
+      - --label=org.opencontainers.image.revision={{.FullCommit}}
+      - --label=org.opencontainers.image.version={{.Version}}
+      - --label=org.opencontainers.image.source={{.GitURL}}
+      - --platform=linux/amd64
+    dockerfile: Dockerfile
+    image_templates:
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
+      - mcornick/mpg:{{ .Tag }}-amd64
+    use: buildx
+  - build_flag_templates:
+      - --pull
+      - --label=io.artifacthub.package.readme-url=https://raw.githubusercontent.com/mcornick/mpg/main/README.md
+      - --label=io.artifacthub.package.maintainers=[{"name":"Mark Cornick","email":"mcornick@mcornick.com"}]
+      - --label=io.artifacthub.package.license=MIT
+      - --label=org.opencontainers.image.description="Mark's Password Generator"
+      - --label=org.opencontainers.image.created={{.Date}}
+      - --label=org.opencontainers.image.name={{.ProjectName}}
+      - --label=org.opencontainers.image.revision={{.FullCommit}}
+      - --label=org.opencontainers.image.version={{.Version}}
+      - --label=org.opencontainers.image.source={{.GitURL}}
+      - --platform=linux/arm64
+    dockerfile: Dockerfile
+    goarch: arm64
+    image_templates:
+      - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
+      - mcornick/mpg:{{ .Tag }}-arm64
+    use: buildx
 gomod:
   proxy: true
-kos:
-  - bare: true
-    build: mpg
-    id: mpg-ghcr
-    platforms:
-      - linux/amd64
-      - linux/arm64
-    repository: ghcr.io/mcornick/mpg
-    tags:
-      - latest
-      - "{{.Tag}}"
-  - bare: true
-    build: mpg
-    id: mpg-docker
-    platforms:
-      - linux/amd64
-      - linux/arm64
-    repository: mcornick/mpg
-    tags:
-      - latest
-      - "{{.Tag}}"
 milestones:
   - close: true
 nfpms:
