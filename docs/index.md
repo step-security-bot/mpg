@@ -44,21 +44,7 @@ If the password length is less than or equal to the total number of characters s
 
     I maintain binary releases on GitHub [here](https://github.com/mcornick/mpg/releases). As of version 1.0.21, releases are built for macOS (universal), Linux (i386, amd64, arm64, and armv6) and Windows (i386, amd64).
 
-=== "Signatures"
-
     Binary checksums are signed with my [GPG key](https://github.com/mcornick.gpg).
-
-    !!! Note
-
-        Container signatures are an ongoing experiment. They might be broken. Do not depend on them (or, really, on mpg) for mission-critical things.
-
-    Container manifests are signed with [Cosign](https://docs.sigstore.dev/cosign/overview/). The signatures are created with Cosign's "keyless" mode, which requires setting `COSIGN_EXPERIMENTAL=1` when using Cosign versions prior to 2.0.0:
-
-    ```bash
-    env COSIGN_EXPERIMENTAL=1 cosign verify ghcr.io/mcornick/mpg
-    # or, for Docker Hub
-    env COSIGN_EXPERIMENTAL=1 cosign verify mcornick/mpg
-    ```
 
 ## Usage
 
