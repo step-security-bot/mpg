@@ -81,7 +81,9 @@ kos:
 milestones:
   - close: true
 nfpms:
-  - contents:
+  - archlinux:
+      packager: Mark Cornick <mcornick@mcornick.com>
+    contents:
       - dst: /usr/share/bash-completion/completions/mpg
         file_info:
           mode: 0644
@@ -105,6 +107,7 @@ nfpms:
     description: Mark's Password Generator
     formats:
       - apk
+      - archlinux
       - deb
       - rpm
     homepage: https://github.com/mcornick/mpg
