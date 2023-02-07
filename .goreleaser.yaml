@@ -55,23 +55,6 @@ changelog:
   use: github
 checksum:
   name_template: checksums.txt
-docker_manifests:
-  - image_templates:
-      - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
-      - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
-    name_template: ghcr.io/mcornick/mpg:{{ .Tag }}
-  - image_templates:
-      - mcornick/mpg:{{ .Tag }}-amd64
-      - mcornick/mpg:{{ .Tag }}-arm64
-    name_template: mcornick/mpg:{{ .Tag }}
-  - image_templates:
-      - ghcr.io/mcornick/mpg:{{ .Tag }}-amd64
-      - ghcr.io/mcornick/mpg:{{ .Tag }}-arm64
-    name_template: ghcr.io/mcornick/mpg:latest
-  - image_templates:
-      - mcornick/mpg:{{ .Tag }}-amd64
-      - mcornick/mpg:{{ .Tag }}-arm64
-    name_template: mcornick/mpg:latest
 docker_signs:
   - args:
       - sign
