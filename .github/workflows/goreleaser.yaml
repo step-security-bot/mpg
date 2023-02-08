@@ -40,6 +40,9 @@ jobs:
           FURY_TOKEN: ${{ secrets.FURY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
+          MASTODON_CLIENT_ID: ${{ secrets.MASTODON_CLIENT_ID }}
+          MASTODON_CLIENT_SECRET: ${{ secrets.MASTODON_CLIENT_SECRET }}
+          MASTODON_ACCESS_TOKEN: ${{ secrets.MASTODON_ACCESS_TOKEN }}
         uses: goreleaser/goreleaser-action@v4
         with:
           args: release --clean
