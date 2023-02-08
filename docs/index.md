@@ -174,6 +174,8 @@ For example, these files replicate the default configuration of __mpg__:
     }
     ```
 
+A [JSON Schema](config.schema.json) for the configuration file is available for editors that support it.
+
 ### Environment Variables
 
 Configuration is also possible using environment variables. For example, these environment variables would replicate the default configuration of __mpg__:
