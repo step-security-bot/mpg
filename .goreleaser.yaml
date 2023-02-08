@@ -1,4 +1,9 @@
 ---
+# .goreleaser.yaml
+announce:
+  mastodon:
+    enabled: true
+    server: https://social.cornick.codes
 archives:
   - builds_info:
       group: root

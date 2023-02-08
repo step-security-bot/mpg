@@ -206,3 +206,7 @@ __mpg__ uses the MIT license. Please indicate your acceptance of the MIT license
 __mpg__ is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 Thanks for contributing!
+
+## Etcetera
+
+__mpg__ releases are announced on a [Mastodon account](https://social.cornick.codes/@mpg) which you are welcome to follow.

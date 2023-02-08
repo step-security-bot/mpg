@@ -3,9 +3,9 @@ copyright: Copyright &copy; 2023 Mark Cornick
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/mcornick
+      link: https://github.com/mcornick/mpg
     - icon: fontawesome/brands/mastodon
-      link: https://social.sdf.org/@mcornick
+      link: https://social.cornick.codes/@mpg
   version:
     provider: mike
 markdown_extensions:
