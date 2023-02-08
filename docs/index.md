@@ -66,6 +66,16 @@ If the password length is less than or equal to the total number of characters s
     deb [trusted=yes] https://apt.fury.io/mcornick/ /
     ```
 
+=== "Arch User Repository"
+
+    I maintain an [AUR](https://wiki.archlinux.org/title/Arch_User_Repository) for mpg.
+
+    ```
+    git clone https://github.com/mcornick/mpg-aur.git
+    cd mpg-aur
+    makepkg -i
+    ```
+
 === "Signatures"
 
     Binary checksums are signed with my [GPG key](https://github.com/mcornick.gpg).
