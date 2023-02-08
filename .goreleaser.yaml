@@ -12,6 +12,25 @@ archives:
       - format: zip
         goos: windows
     rlcp: true
+aurs:
+  - description: "Mark's Password Generator"
+    git_url: 'ssh://git@github.com/mcornick/mpg-aur.git'
+    homepage: "https://mcornick.com/mpg/"
+    license: "MIT"
+    maintainers:
+      - 'Mark Cornick <mcornick@mcornick.com>'
+    name: mpg-bin
+    package: |-
+      install -Dm755 "./mpg" "${pkgdir}/usr/bin/mpg"
+      install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/mpg/LICENSE"
+      mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+      mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+      mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+      install -Dm644 "./completions/mpg.bash" "${pkgdir}/usr/share/bash-completion/completions/mpg"
+      install -Dm644 "./completions/mpg.zsh" "${pkgdir}/usr/share/zsh/site-functions/_mpg"
+      install -Dm644 "./completions/mpg.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/mpg.fish"
+      install -Dm644 "./manpages/mpg.1" "${pkgdir}/usr/share/man/man1/mpg.1"
+    private_key: '{{ .Env.AUR_KEY }}'
 before:
   hooks:
     - go mod tidy
