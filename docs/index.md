@@ -3,6 +3,8 @@ title: mpg
 ---
 __mpg__ is a command-line tool that generates strings of random characters that can be used as reasonably secure passwords.
 
+![Screenshot](mpg.gif "Screenshot")
+
 Passwords are, by default, chosen from the union of three character classes: upper-case letters, lower-case letters, and digits.
 
 Options can be given to omit any one or two of these character classes. For instance, you can omit uppercase letters and digits with `mpg --upper=false --digit=false`. This will return a password composed only of lowercase letters.
