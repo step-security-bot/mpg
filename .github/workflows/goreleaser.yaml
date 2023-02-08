@@ -36,6 +36,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
           username: mcornick
       - env:
+          FURY_TOKEN: ${{ secrets.FURY_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
         uses: goreleaser/goreleaser-action@v4
