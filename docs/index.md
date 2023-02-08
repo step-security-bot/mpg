@@ -48,6 +48,10 @@ If the password length is less than or equal to the total number of characters s
 
     RPM packages are also available from my Gemfury repository.
 
+    !!! Note
+
+        I do not, and do not intend to, submit __mpg__ to any distribution's official repositories.
+
     ```
     # /etc/yum.repos.d/mcornick.repo
     [fury]
@@ -61,6 +65,10 @@ If the password length is less than or equal to the total number of characters s
 
     DEB packages are also available from my Gemfury repository.
 
+    !!! Note
+
+        I do not, and do not intend to, submit __mpg__ to any distribution's official repositories.
+
     ```
     # /etc/apt/sources.list.d/mcornick.list
     deb [trusted=yes] https://apt.fury.io/mcornick/ /
@@ -69,6 +77,10 @@ If the password length is less than or equal to the total number of characters s
 === "Arch User Repository"
 
     I maintain an [AUR](https://wiki.archlinux.org/title/Arch_User_Repository) for mpg.
+
+    !!! Note
+
+        I do not, and do not intend to, submit __mpg__ to Arch Linux's official AUR.
 
     ```
     git clone https://github.com/mcornick/mpg-aur.git
