@@ -55,6 +55,8 @@ changelog:
   use: github
 checksum:
   name_template: checksums.txt
+furies:
+  - account: mcornick
 gomod:
   proxy: true
 kos:
