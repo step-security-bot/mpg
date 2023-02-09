@@ -56,6 +56,19 @@ that can be used as reasonably secure passwords.`,
 			if !p.Upper && !p.Lower && !p.Digit {
 				log.Fatal("no character classes selected")
 			}
+			minimumLength := 0
+			if p.Upper {
+				minimumLength++
+			}
+			if p.Lower {
+				minimumLength++
+			}
+			if p.Digit {
+				minimumLength++
+			}
+			if p.Length < minimumLength {
+				log.Fatal("length is too short")
+			}
 			result, err := linenoise.Noise(p)
 			if err != nil {
 				log.Fatal(err)
