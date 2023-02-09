@@ -53,6 +53,9 @@ that can be used as reasonably secure passwords.`,
 				Lower:  viper.GetBool("lower"),
 				Digit:  viper.GetBool("digit"),
 			}
+			if !p.Upper && !p.Lower && !p.Digit {
+				log.Fatal("no character classes selected")
+			}
 			result, err := linenoise.Noise(p)
 			if err != nil {
 				log.Fatal(err)
