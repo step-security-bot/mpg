@@ -30,6 +30,7 @@ theme:
     - content.action.view
     - content.code.copy
   icon:
+    logo: material/speedometer
     repo: fontawesome/brands/github
   name: material
   palette:
