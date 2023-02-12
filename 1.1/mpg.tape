@@ -6,11 +6,13 @@ Set Theme "Dracula"
 Set Width 640
 Set Height 480
 Set Padding 10
-Type "mpg --help" Sleep 500ms  Enter
+Type "mpg --help" Enter
 Sleep 5s
-Type "mpg" Sleep 500ms  Enter
+Type "mpg" Enter
 Sleep 2s
-Type "mpg --length=32" Sleep 500ms  Enter
+Type "mpg --length=32" Enter
 Sleep 2s
-Type "mpg --upper=false --digit=false" Sleep 500ms  Enter
+Type "mpg --upper=false --digit=false" Enter
+Sleep 2s
+Type "mpg --upper=false --lower=false --digit=false" Enter
 Sleep 5s
