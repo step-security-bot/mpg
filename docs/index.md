@@ -215,4 +215,4 @@ Thanks for contributing!
 
 __mpg__ releases are announced on a [Mastodon account](https://social.cornick.codes/@mpg) which you are welcome to follow.
 
-When possible, commits to __mpg__ are signed with my SSH key. To verify them, you might need [my public key](https://github.com/mcornick.keys).
+To verify SSH key-based signatures on commits to __mpg__, you might need [my public key](https://github.com/mcornick.keys).
