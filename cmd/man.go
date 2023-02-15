@@ -27,7 +27,6 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"log"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
@@ -43,10 +42,7 @@ var manCmd = &cobra.Command{
 			Section: "1",
 		}
 		stdout := new(bytes.Buffer)
-		err := doc.GenMan(rootCmd, header, stdout)
-		if err != nil {
-			log.Fatal(err)
-		}
+		cobra.CheckErr(doc.GenMan(rootCmd, header, stdout))
 		fmt.Print(stdout.String())
 	},
 }

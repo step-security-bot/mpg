@@ -26,7 +26,6 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/mcornick/linenoise"
@@ -54,7 +53,7 @@ that can be used as reasonably secure passwords.`,
 				Digit:  viper.GetBool("digit"),
 			}
 			if !p.Upper && !p.Lower && !p.Digit {
-				log.Fatal("no character classes selected")
+				cobra.CheckErr(fmt.Errorf("no character classes were selected"))
 			}
 			minimumLength := 0
 			if p.Upper {
@@ -67,37 +66,30 @@ that can be used as reasonably secure passwords.`,
 				minimumLength++
 			}
 			if p.Length < minimumLength {
-				log.Fatal("length is too short")
+				cobra.CheckErr(fmt.Errorf("length must be at least %d", minimumLength))
 			}
 			result, err := linenoise.Noise(p)
-			if err != nil {
-				log.Fatal(err)
-			}
+			cobra.CheckErr(err)
 			fmt.Println(result)
 		},
 	}
 )
 
 func Execute() {
-	err := rootCmd.Execute()
-	if err != nil {
-		log.Fatal(err)
-	}
+	cobra.CheckErr(rootCmd.Execute())
 }
 
 func init() {
 	viper.SetConfigName("config")
 	viper.AddConfigPath("/etc/mpg/")
 	configDir, err := os.UserConfigDir()
-	if err != nil {
-		log.Fatal(err)
-	}
+	cobra.CheckErr(err)
 	viper.AddConfigPath(configDir + "/mpg")
 	err = viper.ReadInConfig()
 	if err != nil {
 		_, ok := err.(viper.ConfigFileNotFoundError)
 		if !ok {
-			log.Fatal(err)
+			cobra.CheckErr(err)
 		}
 	}
 	rootCmd.Flags().IntVarP(&length, "length", "l", 16, "length")
@@ -106,13 +98,7 @@ func init() {
 	rootCmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
 	viper.SetEnvPrefix("mpg")
 	for _, key := range []string{"length", "upper", "lower", "digit"} {
-		err = viper.BindEnv(key)
-		if err != nil {
-			log.Fatal(err)
-		}
-		err = viper.BindPFlag(key, rootCmd.Flags().Lookup(key))
-		if err != nil {
-			log.Fatal(err)
-		}
+		cobra.CheckErr(viper.BindEnv(key))
+		cobra.CheckErr(viper.BindPFlag(key, rootCmd.Flags().Lookup(key)))
 	}
 }
