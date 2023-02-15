@@ -25,6 +25,7 @@
 package cmd
 
 import (
+	"bytes"
 	"fmt"
 	"log"
 
@@ -34,18 +35,19 @@ import (
 
 var manCmd = &cobra.Command{
 	Use:   "man",
-	Short: "Generate man pages",
-	Long: fmt.Sprintln(`Generates man pages for mpg and its subcommands.
-Files will be written to the current directory.`),
+	Short: "Generate man page",
+	Long:  fmt.Sprintln("Generates man page for mpg on stdout."),
 	Run: func(cmd *cobra.Command, args []string) {
 		header := &doc.GenManHeader{
 			Title:   "Mark Cornick",
 			Section: "1",
 		}
-		err := doc.GenManTree(rootCmd, header, ".")
+		stdout := new(bytes.Buffer)
+		err := doc.GenMan(rootCmd, header, stdout)
 		if err != nil {
 			log.Fatal(err)
 		}
+		fmt.Print(stdout.String())
 	},
 }
 

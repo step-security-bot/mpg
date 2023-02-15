@@ -11,7 +11,7 @@ archives:
       - README.md
       - LICENSE
       - completions/*
-      - manpages/mpg.1
+      - manpage/mpg.1
     format_overrides:
       - format: zip
         goos: windows
@@ -33,13 +33,13 @@ aurs:
       install -Dm644 "./completions/mpg.bash" "${pkgdir}/usr/share/bash-completion/completions/mpg"
       install -Dm644 "./completions/mpg.zsh" "${pkgdir}/usr/share/zsh/site-functions/_mpg"
       install -Dm644 "./completions/mpg.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/mpg.fish"
-      install -Dm644 "./manpages/mpg.1" "${pkgdir}/usr/share/man/man1/mpg.1"
+      install -Dm644 "./manpage/mpg.1" "${pkgdir}/usr/share/man/man1/mpg.1"
     private_key: '{{ .Env.AUR_KEY }}'
 before:
   hooks:
     - go mod tidy
     - ./scripts/completions.sh
-    - ./scripts/manpages.sh
+    - ./scripts/manpage.sh
 brews:
   - description: Mark's Password Generator
     homepage: https://github.com/mcornick/mpg
@@ -48,7 +48,7 @@ brews:
       bash_completion.install "completions/mpg.bash" => "mpg"
       zsh_completion.install "completions/mpg.zsh" => "_mpg"
       fish_completion.install "completions/mpg.fish"
-      man1.install "manpages/mpg.1"
+      man1.install "manpage/mpg.1"
     license: MIT
     tap:
       name: homebrew-tap
@@ -124,7 +124,7 @@ nfpms:
       - dst: /usr/share/man/man1/mpg.1
         file_info:
           mode: 0644
-        src: ./manpages/mpg.1
+        src: ./manpage/mpg.1
       - dst: /usr/share/doc/mpg/copyright
         file_info:
           mode: 0644
