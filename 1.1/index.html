@@ -537,7 +537,7 @@
 <p>Passwords are guaranteed to contain at least one of each selected character class. The default length is 16. <strong>mpg</strong> will create a password of any length greater than or equal to the number of character classes selected.</p>
 <p>If the password length is less than or equal to the total number of characters selected, <strong>mpg</strong> will not repeat characters within the generated password. For instance, in the default configuration of <strong>mpg</strong>, 62 characters are selected (26 uppercase, 26 lowercase, and 10 digits) and so a length of 62 or less will not repeat any character.</p>
 <h2 id="installation">Installation</h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Homebrew</label><label for="__tabbed_1_2">Scoop</label><label for="__tabbed_1_3">Container Image</label><label for="__tabbed_1_4">Binaries and Linux packages</label><label for="__tabbed_1_5">YUM Repository</label><label for="__tabbed_1_6">APT Repository</label><label for="__tabbed_1_7">Arch User Repository</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:8"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><input id="__tabbed_1_6" name="__tabbed_1" type="radio" /><input id="__tabbed_1_7" name="__tabbed_1" type="radio" /><input id="__tabbed_1_8" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Homebrew</label><label for="__tabbed_1_2">Scoop</label><label for="__tabbed_1_3">Container Image</label><label for="__tabbed_1_4">Binaries and Linux packages</label><label for="__tabbed_1_5">YUM Repository</label><label for="__tabbed_1_6">APT Repository</label><label for="__tabbed_1_7">Arch User Repository</label><label for="__tabbed_1_8">From source</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>I maintain a <a href="https://brew.sh/">Homebrew</a> tap.</p>
@@ -604,6 +604,10 @@ deb [trusted=yes] https://apt.fury.io/mcornick/ /
 cd mpg-aur
 makepkg -i
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>The usual: <code>go install github.com/mcornick/mpg@latest</code></p>
+<p>While I no longer build or test for platforms other than the ones listed under the Binaries tab, <strong>mpg</strong> is simple enough that it <em>should</em> still work on any platform supported by Go, and if you find that it does not, feel free to file a GitHub issue and I'll take a look.</p>
 </div>
 </div>
 </div>
