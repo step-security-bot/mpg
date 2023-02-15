@@ -201,8 +201,8 @@ export MPG_UPPER=1
 The order of precedence for configuration is:
 
 1. Values given on the command line
-1. Values given as environment variables
-1. Values in the configuration file
+2. Values given as environment variables
+3. Values in the configuration file
 
 ## Contributing to mpg
 
