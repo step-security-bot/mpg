@@ -55,16 +55,7 @@ that can be used as reasonably secure passwords.`,
 			if !p.Upper && !p.Lower && !p.Digit {
 				cobra.CheckErr(fmt.Errorf("no character classes were selected"))
 			}
-			minimumLength := 0
-			if p.Upper {
-				minimumLength++
-			}
-			if p.Lower {
-				minimumLength++
-			}
-			if p.Digit {
-				minimumLength++
-			}
+			minimumLength := btoi(p.Upper) + btoi(p.Lower) + btoi(p.Digit)
 			if p.Length < minimumLength {
 				cobra.CheckErr(fmt.Errorf("length must be at least %d", minimumLength))
 			}
@@ -77,6 +68,13 @@ that can be used as reasonably secure passwords.`,
 
 func Execute() {
 	cobra.CheckErr(rootCmd.Execute())
+}
+
+func btoi(b bool) int {
+	if b {
+		return 1
+	}
+	return 0
 }
 
 func init() {
