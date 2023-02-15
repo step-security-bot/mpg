@@ -25,8 +25,8 @@
 package cmd
 
 import (
-	"bytes"
 	"fmt"
+	"os"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/cobra/doc"
@@ -41,9 +41,7 @@ var manCmd = &cobra.Command{
 			Title:   "Mark Cornick",
 			Section: "1",
 		}
-		stdout := new(bytes.Buffer)
-		cobra.CheckErr(doc.GenMan(rootCmd, header, stdout))
-		fmt.Print(stdout.String())
+		cobra.CheckErr(doc.GenMan(rootCmd, header, os.Stdout))
 	},
 }
 
