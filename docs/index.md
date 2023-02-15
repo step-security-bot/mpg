@@ -110,37 +110,40 @@ If the password length is less than or equal to the total number of characters s
 
 ```bash
 $ mpg --help
-mpg is a command-line tool that generates strings of
-random characters that can be used as reasonably secure passwords.
+mpg is a command-line tool that generates strings of random characters
+that can be used as reasonably secure passwords.
 
 Usage:
   mpg [flags]
   mpg [command]
 
 Available Commands:
-  completion  Generate completion script
-  help        Help about any command
-  man         Generate man pages
+  completion        Generate completion script
+  help              Help about any command
+  man               Generate man page
 
 Flags:
-  -d, --digit        include digits (default true)
-  -h, --help         help for mpg
-  -l, --length int   length (default 16)
-  -u, --lower        include lowercase (default true)
-  -U, --upper        include uppercase (default true)
-  -v, --version      version for mpg
+  -c, --config string   config file (default /Users/mcornick/Library/Application Support/mpg/config.yaml)
+  -d, --digit           include digits (default true)
+  -h, --help            help for mpg
+  -l, --length int      length (default 16)
+  -u, --lower           include lowercase (default true)
+  -U, --upper           include uppercase (default true)
+  -v, --version         version for mpg
 
 Use "mpg [command] --help" for more information about a command.
 ```
 
 ### Configuration File
 
-__mpg__ supports an optional configuration file. It must be in a format supported by [viper](https://github.com/spf13/viper), such as YAML, TOML, or JSON; be named `config.XXXX` with the proper format suffix; use the command line options as keys; and be located in one of these directories:
+__mpg__ supports an optional configuration file. To be used by default, it must be in a format supported by [viper](https://github.com/spf13/viper), such as YAML, TOML, or JSON; be named `config.XXXX` with the proper format suffix; use the command line options as keys; and be located in one of these directories:
 
 - `$HOME/Library/Application Support/mpg` (macOS)
 - `$XDG_CONFIG_HOME/mpg` (Unix)
 - `/etc/mpg` (macOS or Unix)
 - `%AppData%\mpg` (Windows)
+
+You can also specify an arbitrary location for the configuration file with the `--config` option. It still needs to be in a supported format, but the other above requirements don't apply if `--config` is used.
 
 For example, these files replicate the default configuration of __mpg__:
 
