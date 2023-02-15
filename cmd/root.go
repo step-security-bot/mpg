@@ -34,6 +34,7 @@ import (
 )
 
 var (
+	cfgFile string
 	length  int
 	upper   bool
 	lower   bool
@@ -78,11 +79,17 @@ func btoi(b bool) int {
 }
 
 func init() {
-	viper.SetConfigName("config")
-	viper.AddConfigPath("/etc/mpg/")
 	configDir, err := os.UserConfigDir()
 	cobra.CheckErr(err)
-	viper.AddConfigPath(configDir + "/mpg")
+	if cfgFile != "" {
+		viper.SetConfigFile(cfgFile)
+	} else {
+		viper.SetConfigName("config")
+		viper.AddConfigPath("/etc/mpg/")
+		viper.AddConfigPath(configDir + "/mpg")
+	}
+	viper.SetEnvPrefix("mpg")
+	viper.AutomaticEnv()
 	err = viper.ReadInConfig()
 	if err != nil {
 		_, ok := err.(viper.ConfigFileNotFoundError)
@@ -94,9 +101,9 @@ func init() {
 	rootCmd.Flags().BoolVarP(&upper, "upper", "U", true, "include uppercase")
 	rootCmd.Flags().BoolVarP(&lower, "lower", "u", true, "include lowercase")
 	rootCmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
-	viper.SetEnvPrefix("mpg")
+	rootCmd.Flags().StringVarP(&cfgFile, "config", "c", "",
+		fmt.Sprintf("config file (default %s/mpg/config.yaml)", configDir))
 	for _, key := range []string{"length", "upper", "lower", "digit"} {
-		cobra.CheckErr(viper.BindEnv(key))
 		cobra.CheckErr(viper.BindPFlag(key, rootCmd.Flags().Lookup(key)))
 	}
 }
