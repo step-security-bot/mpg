@@ -104,6 +104,12 @@ If the password length is less than or equal to the total number of characters s
     makepkg -i
     ```
 
+=== "From source"
+
+    The usual: `go install github.com/mcornick/mpg@latest`
+
+    While I no longer build or test for platforms other than the ones listed under the Binaries tab, __mpg__ is simple enough that it _should_ still work on any platform supported by Go, and if you find that it does not, feel free to file a GitHub issue and I'll take a look.
+
 ## Usage
 
 ### Command Line
