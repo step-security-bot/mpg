@@ -149,7 +149,7 @@ __mpg__ supports an optional configuration file. To be used by default, it must 
 - `/etc/mpg` (macOS or Unix)
 - `%AppData%\mpg` (Windows)
 
-You can also specify an arbitrary location for the configuration file with the `--config` option. It still needs to be in a supported format, but the other above requirements don't apply if `--config` is used.
+You can also specify an arbitrary location for the configuration file with the `--config` option. It still needs to be in a supported format.
 
 For example, these files replicate the default configuration of __mpg__:
 
