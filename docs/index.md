@@ -222,6 +222,6 @@ Thanks for contributing!
 
 ## Etcetera
 
-__mpg__ releases are announced on a [Mastodon account](https://social.cornick.codes/@mpg) which you are welcome to follow.
+__mpg__ releases are announced on a [Mastodon account](https://social.lol/@mcornick) which you are welcome to follow.
 
 To verify signatures on commits to __mpg__, you might need [my GPG public key](https://github.com/mcornick.gpg) or [my SSH public key](https://github.com/mcornick.keys).
