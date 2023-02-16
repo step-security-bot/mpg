@@ -47,22 +47,9 @@ var (
 		Long: `mpg is a command-line tool that generates strings of random characters
 that can be used as reasonably secure passwords.`,
 		Run: func(cmd *cobra.Command, args []string) {
-			p := linenoise.Parameters{
-				Length: viper.GetInt("length"),
-				Upper:  viper.GetBool("upper"),
-				Lower:  viper.GetBool("lower"),
-				Digit:  viper.GetBool("digit"),
-			}
-			if !p.Upper && !p.Lower && !p.Digit {
-				cobra.CheckErr(fmt.Errorf("no character classes were selected"))
-			}
-			minimumLength := btoi(p.Upper) + btoi(p.Lower) + btoi(p.Digit)
-			if p.Length < minimumLength {
-				cobra.CheckErr(fmt.Errorf("length must be at least %d", minimumLength))
-			}
-			result, err := linenoise.Noise(p)
+			result, err := generatePassword(cmd, args)
 			cobra.CheckErr(err)
-			fmt.Println(result)
+			cmd.Println(result)
 		},
 	}
 )
@@ -76,6 +63,24 @@ func btoi(b bool) int {
 		return 1
 	}
 	return 0
+}
+
+func generatePassword(cmd *cobra.Command, args []string) (string, error) {
+	p := linenoise.Parameters{
+		Length: viper.GetInt("length"),
+		Upper:  viper.GetBool("upper"),
+		Lower:  viper.GetBool("lower"),
+		Digit:  viper.GetBool("digit"),
+	}
+	if !p.Upper && !p.Lower && !p.Digit {
+		return "", fmt.Errorf("no character classes were selected")
+	}
+	minimumLength := btoi(p.Upper) + btoi(p.Lower) + btoi(p.Digit)
+	if p.Length < minimumLength {
+		return "", fmt.Errorf("length must be at least %d", minimumLength)
+	}
+	result, _ := linenoise.Noise(p)
+	return result, nil
 }
 
 func init() {
