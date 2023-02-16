@@ -27,6 +27,7 @@ package cmd
 import (
 	"bytes"
 	"io"
+	"os"
 	"regexp"
 	"strings"
 	"testing"
@@ -50,10 +51,7 @@ func executeWithArgs(args []string) string {
 			cmd.Println(result)
 		},
 	}
-	testCmd.Flags().IntVarP(&length, "length", "l", 16, "length")
-	testCmd.Flags().BoolVarP(&upper, "upper", "U", true, "include uppercase")
-	testCmd.Flags().BoolVarP(&lower, "lower", "u", true, "include lowercase")
-	testCmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
+	setup(testCmd)
 	buff := bytes.NewBufferString("")
 	testCmd.SetOut(buff)
 	testCmd.SetArgs(args)
@@ -149,6 +147,23 @@ func TestWithShortLength(t *testing.T) {
 	expected := "length must be at least 3"
 	if result != expected {
 		t.Fatalf("expected Error: %s, got %s", expected, result)
+	}
+}
+
+func TestWithConfigFileOption(t *testing.T) {
+	f, err := os.CreateTemp("", "mpgtestconfig*.yaml")
+	if err != nil {
+		t.Fatalf(err.Error())
+	}
+	defer f.Close()
+	defer os.Remove(f.Name())
+	_, err = f.Write([]byte("length: 8\n"))
+	if err != nil {
+		t.Fatalf(err.Error())
+	}
+	result := executeWithArgs([]string{"--config=" + f.Name()})
+	if len(result) != 8 {
+		t.Fatalf("expected length of 8, got %d", len(result))
 	}
 }
 
