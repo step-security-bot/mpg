@@ -57,7 +57,10 @@ func executeWithArgs(args []string) string {
 	buff := bytes.NewBufferString("")
 	testCmd.SetOut(buff)
 	testCmd.SetArgs(args)
-	testCmd.Execute()
+	err := testCmd.Execute()
+	if err != nil {
+		panic(err)
+	}
 	stdout, err := io.ReadAll(buff)
 	if err != nil {
 		panic(err)
