@@ -84,17 +84,21 @@ func generatePassword(cmd *cobra.Command, args []string) (string, error) {
 }
 
 func init() {
+	setup(rootCmd)
+}
+
+func setup(cmd *cobra.Command) {
 	cobra.OnInitialize(initConfig)
 	configDir, err := os.UserConfigDir()
 	cobra.CheckErr(err)
-	rootCmd.Flags().StringVarP(&cfgFile, "config", "c", "",
+	cmd.Flags().StringVarP(&cfgFile, "config", "c", "",
 		fmt.Sprintf("config file (default %s/mpg/config.yaml)", configDir))
-	rootCmd.Flags().IntVarP(&length, "length", "l", 16, "length")
-	rootCmd.Flags().BoolVarP(&upper, "upper", "U", true, "include uppercase")
-	rootCmd.Flags().BoolVarP(&lower, "lower", "u", true, "include lowercase")
-	rootCmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
+	cmd.Flags().IntVarP(&length, "length", "l", 16, "length")
+	cmd.Flags().BoolVarP(&upper, "upper", "U", true, "include uppercase")
+	cmd.Flags().BoolVarP(&lower, "lower", "u", true, "include lowercase")
+	cmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
 	for _, key := range []string{"length", "upper", "lower", "digit"} {
-		cobra.CheckErr(viper.BindPFlag(key, rootCmd.Flags().Lookup(key)))
+		cobra.CheckErr(viper.BindPFlag(key, cmd.Flags().Lookup(key)))
 	}
 }
 
