@@ -148,3 +148,17 @@ func TestWithShortLength(t *testing.T) {
 		t.Fatalf("expected Error: %s, got %s", expected, result)
 	}
 }
+
+func TestBtoITrue(t *testing.T) {
+	result := btoi(true)
+	if result != 1 {
+		t.Fatalf("expected 1, got %d", result)
+	}
+}
+
+func TestBtoIFalse(t *testing.T) {
+	result := btoi(false)
+	if result != 0 {
+		t.Fatalf("expected 0, got %d", result)
+	}
+}
