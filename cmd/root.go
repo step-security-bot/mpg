@@ -84,6 +84,21 @@ func generatePassword(cmd *cobra.Command, args []string) (string, error) {
 }
 
 func init() {
+	cobra.OnInitialize(initConfig)
+	configDir, err := os.UserConfigDir()
+	cobra.CheckErr(err)
+	rootCmd.Flags().StringVarP(&cfgFile, "config", "c", "",
+		fmt.Sprintf("config file (default %s/mpg/config.yaml)", configDir))
+	rootCmd.Flags().IntVarP(&length, "length", "l", 16, "length")
+	rootCmd.Flags().BoolVarP(&upper, "upper", "U", true, "include uppercase")
+	rootCmd.Flags().BoolVarP(&lower, "lower", "u", true, "include lowercase")
+	rootCmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
+	for _, key := range []string{"length", "upper", "lower", "digit"} {
+		cobra.CheckErr(viper.BindPFlag(key, rootCmd.Flags().Lookup(key)))
+	}
+}
+
+func initConfig() {
 	configDir, err := os.UserConfigDir()
 	cobra.CheckErr(err)
 	if cfgFile != "" {
@@ -101,14 +116,5 @@ func init() {
 		if !ok {
 			cobra.CheckErr(err)
 		}
-	}
-	rootCmd.Flags().IntVarP(&length, "length", "l", 16, "length")
-	rootCmd.Flags().BoolVarP(&upper, "upper", "U", true, "include uppercase")
-	rootCmd.Flags().BoolVarP(&lower, "lower", "u", true, "include lowercase")
-	rootCmd.Flags().BoolVarP(&digit, "digit", "d", true, "include digits")
-	rootCmd.Flags().StringVarP(&cfgFile, "config", "c", "",
-		fmt.Sprintf("config file (default %s/mpg/config.yaml)", configDir))
-	for _, key := range []string{"length", "upper", "lower", "digit"} {
-		cobra.CheckErr(viper.BindPFlag(key, rootCmd.Flags().Lookup(key)))
 	}
 }
