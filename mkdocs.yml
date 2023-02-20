@@ -5,7 +5,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/mcornick/mpg
     - icon: fontawesome/brands/mastodon
-      link: https://social.lol/@mpg
+      link: https://social.lol/@mcornick
   version:
     provider: mike
 markdown_extensions:
