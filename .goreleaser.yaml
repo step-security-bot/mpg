@@ -1,8 +1,4 @@
 ---
-announce:
-  mastodon:
-    enabled: true
-    server: https://social.lol
 archives:
   - builds_info:
       group: root
