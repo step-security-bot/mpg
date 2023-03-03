@@ -13,11 +13,10 @@ jobs:
           go-version: ">=1.19.5"
       - uses: sigstore/cosign-installer@main
         with:
-          cosign-release: v2.0.0
+          cosign-release: v1.13.1
       - uses: anchore/sbom-action/download-syft@main
         with:
           syft-version: v0.69.0
-      - uses: imjasonh/setup-crane@v0.1
       - id: import_gpg
         uses: crazy-max/ghaction-import-gpg@v5
         with:
@@ -49,13 +48,13 @@ jobs:
           args: release --clean
           distribution: goreleaser-pro
           version: latest
-      - run: echo "ghcr_io_digest=$(crane digest ghcr.io/mcornick/clilol:latest --full-ref)" >> $GITHUB_ENV
+      - env:
+          COSIGN_EXPERIMENTAL: 1
+        run: cosign sign ghcr.io/mcornick/mpg
         shell: bash
-      - run: echo "docker_com_digest=$(crane digest mcornick/clilol:latest --full-ref)" >> $GITHUB_ENV
-        shell: bash
-      - run: cosign sign $ghcr_io_digest
-        shell: bash
-      - run: cosign sign $docker_com_digest
+      - env:
+          COSIGN_EXPERIMENTAL: 1
+        run: cosign sign mcornick/mpg
         shell: bash
       - run: rm /home/runner/gpgkey.asc
         shell: bash
